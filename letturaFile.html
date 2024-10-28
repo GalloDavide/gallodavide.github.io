@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagrafica</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Anagrafica</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody id="anagrafica-tbody">
+        </tbody>
+    </table>
+
+    <script>
+        
+        function caricaAnagrafica() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "file.json", true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var dati = JSON.parse(xhr.responseText);
+                    stampaAnagrafica(dati);
+                }
+            };
+
+            xhr.send();
+        }
+        function stampaAnagrafica(dati) {
+            var tbody = document.getElementById("anagrafica-tbody");
+            dati.forEach(function (persona) {
+                var riga = document.createElement("tr");
+
+                var nome = document.createElement("td");
+                nome.textContent = persona.nome;
+                riga.appendChild(nome);
+
+                var cognome = document.createElement("td");
+                cognome.textContent = persona.cognome;
+                riga.appendChild(cognome);
+
+                var eta = document.createElement("td");
+                eta.textContent = persona.eta;
+                riga.appendChild(eta);
+
+                var indirizzo = document.createElement("td");
+                indirizzo.textContent = persona.indirizzo;
+                riga.appendChild(indirizzo);
+
+                var citta = document.createElement("td");
+                citta.textContent = persona.citta;
+                riga.appendChild(citta);
+
+                var telefono = document.createElement("td");
+                telefono.textContent = persona.telefono;
+                riga.appendChild(telefono);
+
+                tbody.appendChild(riga);
+            });
+        }
+
+
+        window.onload = function () {
+            caricaAnagrafica();
+        };
+
+        xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+        console.log(xhr.status);
+        if (xhr.status === 200) {
+            var dati = JSON.parse(xhr.responseText);
+            stampaAnagrafica(dati);
+        } else {
+            console.error("Errore nel caricamento del file JSON: " + xhr.status);
+        }}}
+    </script>
+</body>
+
+</html>
