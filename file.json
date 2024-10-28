@@ -1,0 +1,26 @@
+[
+    {
+        "nome": "Mario",
+        "cognome": "Rossi",
+        "eta": 20,
+        "indirizzo": "Via Roma 10",
+        "citta": "Milano",
+        "telefono": "111111111"
+    },
+    {
+        "nome": "Luigi",
+        "cognome": "Verdi",
+        "eta": 30,
+        "indirizzo": "Via Napoli 20",
+        "citta": "Roma",
+        "telefono": "222222222"
+    },
+    {
+        "nome": "Giulia",
+        "cognome": "Bianchi",
+        "eta": 40,
+        "indirizzo": "Corso Italia 15",
+        "citta": "Torino",
+        "telefono": "333333333"
+    }
+]
