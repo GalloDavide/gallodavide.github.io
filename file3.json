@@ -1,0 +1,12 @@
+[
+    {
+      "nome": "Gaia",
+      "cognome": "Bianchi",
+      "eta": 30,
+      "indirizzo": "Via Brombeis, 10",
+      "citta": "Napoli",
+      "telefono": "123456789",
+      "immagine": "https://www.gogoacademy.it/wp-content/uploads/2021/07/Federica-Alfino.png",
+      "curriculum": "cv.html"
+    }
+  ]

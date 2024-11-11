@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anagrafica</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 2px solid #121212;
+            text-align: center;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background-color:lightgrey;">
+<center>
+    <h1>Anagrafica 3.0</h1>
+    <table id="anagraficaTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Telefono</th>
+                <th>Immagine</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</center>
+    <script>
+        function caricaDatiAnagrafica() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "file3.json", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const dati = JSON.parse(xhr.responseText);
+                    visualizzaDatiInTabella(dati);
+                }
+            };
+            xhr.send();
+        }
+
+        function visualizzaDatiInTabella(dati) {
+            const tableBody = document.getElementById("anagraficaTable").querySelector("tbody");
+            tableBody.innerHTML = "";
+
+            dati.forEach(persona => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${persona.nome}</td>
+                    <td>${persona.cognome}</td>
+                    <td>${persona.eta}</td>
+                    <td>${persona.indirizzo}</td>
+                    <td>${persona.citta}</td>
+                    <td>${persona.telefono}</td>
+                    <td><a href="${persona.curriculum}" target="_blank"><img src="${persona.immagine}" alt="Immagine di ${persona.nome}"></a></td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+        }
+        document.addEventListener("DOMContentLoaded", caricaDatiAnagrafica);
+    </script>
+
+</body>
+</html>
