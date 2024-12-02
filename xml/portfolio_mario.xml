@@ -1,0 +1,10 @@
+<portfolio>
+    <lavoro>
+        <titolo>Sito Web Aziendale</titolo>
+        <url>https://www.sitoazienda.com</url>
+    </lavoro>
+    <lavoro>
+        <titolo>Applicazione Mobile</titolo>
+        <url>https://play.google.com/app-mario</url>
+    </lavoro>
+</portfolio>
