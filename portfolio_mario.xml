@@ -1,0 +1,14 @@
+<portfolio>
+    <lavoro>
+        <titolo>Primo Sito Web Aziendale</titolo>
+        <url>https://www.amazon.com</url>
+    </lavoro>
+    <lavoro>
+        <titolo>Secondo Sito Web Aziendale</titolo>
+          <url>https://it.wikipedia.org/wiki/Pagina_principale</url>
+    </lavoro>
+    <lavoro>
+        <titolo>Terzo Sito Web Aziendale</titolo>
+          <url>https://www.gazzetta.it/</url>
+    </lavoro>
+</portfolio>
