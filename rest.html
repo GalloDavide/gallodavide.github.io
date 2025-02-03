@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco dei Post</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 20px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #0073aa;
+            font-size: 22px; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Elenco dei Post</h1>
+        <ul id="post-list"></ul>
+    </center>
+    <script>
+        const apiUrl = 'https://wordpress.org/news/wp-json/wp/v2/posts';
+
+        async function fetchPosts() {
+            try {
+                const response = await fetch(apiUrl);
+                const posts = await response.json();
+                displayPosts(posts);
+            } catch (error) {
+                console.error('Errore nel recupero dei post:', error);
+            }
+        }
+        function displayPosts(posts) {
+            const postList = document.getElementById('post-list');
+            posts.forEach((post, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<center><a href="${post.link}" target="_blank">Post ${index + 1}</a></center>`;
+                postList.appendChild(listItem);
+            });
+        }
+        fetchPosts();
+    </script>
+</body>
+</html>
